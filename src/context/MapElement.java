@@ -3,28 +3,25 @@ package context;
 import java.util.ArrayList;
 
 public class MapElement {
-	private int posX; // position in the map
+	private int posX;
 	private int posY;
 
-	private boolean occupied; // element is known in advance to be occupied
-
-	/* variables for A* implementation */
-
+	/**
+	 *  variables for A* implementation 
+	 */
 	private boolean start;
 	private boolean goal;
+	private boolean occupied;
+	MapElement previousNode;
+	float distanceFromStart;
+	private double f;
 
-	/* Nodes that this is connected to */
-	Map map;
-
+	/**
+	 *  Nodes this is connected to 
+	 */
 	ArrayList<MapElement> neighborList;
 
-	boolean visited;
 
-	float distanceFromStart;
-	float heuristicDistanceFromGoal;
-
-	MapElement previousNode;
-	private double f;
 
 	public int getPosX() {
 		return posX;
@@ -51,7 +48,6 @@ public class MapElement {
 		neighborList = new ArrayList<MapElement>();
 		this.posX = posX;
 		this.posY = posY;
-		this.visited = false;
 		this.occupied = false;
 		this.start = false;
 		this.goal = false;
@@ -62,7 +58,6 @@ public class MapElement {
 		neighborList = new ArrayList<MapElement>();
 		this.posX = posX;
 		this.posY = posY;
-		this.visited = false;
 		this.occupied = occupied;
 		this.start = start;
 		this.goal = goal;

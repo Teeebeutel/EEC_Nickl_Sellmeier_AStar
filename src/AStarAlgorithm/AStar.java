@@ -35,7 +35,6 @@ public class AStar {
 		MapElement curNode;
 		while (!ol.isEmpty()) {
 			curNode = ol.removeMin();
-			if(curNode.getPosX() == 9 && curNode.getPosY() == 9)System.out.println("hoot");
 			if (curNode.getPosX() == map.getGoalLocationX() && curNode.getPosY() == map.getGoalLocationY()) {
 				System.out.println("Done");
 				Path p = reconstructPath(map.getElement(goalX, goalY));

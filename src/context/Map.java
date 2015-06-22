@@ -17,7 +17,7 @@ public class Map {
 
 	private int goalLocationX;
 	private int goalLocationY;
-	
+
 	private AStarHeuristic h;
 
 	public Map(int sx, int sy, int goalx, int goaly, int occupied, int startX, int startY, AStarHeuristic h) {
@@ -107,7 +107,7 @@ public class Map {
 	}
 
 	public float getDistanceBetween(MapElement current, MapElement neighbor) {
-		return (float)  h.getHeuristicDistance(current, neighbor);
+		return (float) h.getHeuristicDistance(current, neighbor);
 	}
 
 	public int getGoalLocationX() {
@@ -121,29 +121,24 @@ public class Map {
 	private void registerEdges() {
 		for (int x = 0; x < sizeX; x++) {
 			for (int y = 0; y < sizeY; y++) {
-				int i = 0;
+
 				MapElement node = elements[x][y];
 				if (!(y == 0) && !elements[x][y - 1].isOccupied()) {
 					node.setNorth(elements[x][y - 1]);
-					i++;
 				}
-				if (!(x >= sizeX-1)) {
+				if (!(x >= sizeX - 1)) {
 					if (!elements[x + 1][y].isOccupied()) {
 						node.setEast(elements[x + 1][y]);
-						i++;
 					}
 				}
-				if (!(y == sizeY-1)) {
+				if (!(y == sizeY - 1)) {
 					if (!elements[x][y + 1].isOccupied()) {
 						node.setSouth(elements[x][y + 1]);
-						i++;
 					}
 				}
 				if (!(x == 0) && !elements[x - 1][y].isOccupied()) {
 					node.setWest(elements[x - 1][y]);
-					i++;
 				}
-				System.out.println("node " + x + "|" + y + " has " + i + " neighbours");
 			}
 		}
 	}
