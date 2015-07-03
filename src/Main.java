@@ -1,20 +1,33 @@
 import AStarAlgorithm.AStar;
+import AStarAlgorithm.AStarHeuristic;
 import AStarAlgorithm.Path;
-import context.AStarHeuristic;
 import context.Map;
 import context.MapElement;
-
+/**
+ * This is a simple implementation for a A*-Algorithm.
+ * We used a modified version of our Code from SS14 Informationssysteme(Ludwig)
+ * To have a more general use, a Interface for calculating the heuristic distance between two Nodes was added.
+ * This can be used to assign different cost to certain Edges. In this case we Want to keep the number of turns as low as possible
+ * 
+ * The Map used only has vertiacal/horizontal edges and is initialized with a set of blocked fields.
+ * To generalize this, the registerEdges()(Map.java) can be moved to an interface just 
+ * like the getHeuristicDistance(), recieving the Maps array of MapElements
+ * 
+ * Run and
+ */
 public class Main {
+	
+	/*information used to build the map*/
 	private static final int MAP_SIZE_X = 10;
 	private static final int MAP_SIZE_Y = 10;
 	private static final int TARGET_X = 9;
 	private static final int TARGET_Y = 9;
 	private static final int START_X = 0;
-	private static final int START_Y = 1;
+	private static final int START_Y = 0;
 	private static final int NUM_OBSTACLES = 10;
 	
 	/*constants used in our heuristic*/
-	private static final int COSTFORTURN = 2;
+	private static final int COSTFORTURN = 1;
 	
 	public static void main(String[] args) {
 		Map m = new Map(MAP_SIZE_X, MAP_SIZE_Y, TARGET_X, TARGET_Y, NUM_OBSTACLES, START_X, START_Y, new AStarHeuristic() {

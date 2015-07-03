@@ -3,6 +3,8 @@ package context;
 import java.util.ArrayList;
 import java.util.Random;
 
+import AStarAlgorithm.AStarHeuristic;
+
 public class Map {
 	private int sizeX, sizeY; // number of elements in each direction
 								// used to get a discrete model of the
@@ -81,6 +83,7 @@ public class Map {
 	}
 
 	public void printMap() {
+		System.out.println("Initialised Map:");
 		for (int y = 0; y < sizeY; y++) {
 			for (int x = 0; x < sizeX; x++) {
 				MapElement e = elements[x][y];

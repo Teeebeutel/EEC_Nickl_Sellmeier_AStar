@@ -11,10 +11,7 @@ public class AStar {
 	private Map map;
 	private int goalX;
 	private int goalY;
-	/**
-	 * closedList The list of Nodes not searched yet, sorted by their distance
-	 * to the goal as guessed by our heuristic.
-	 */
+
 
 	private ArrayList<MapElement> closedList;
 	private OpenList ol;
@@ -36,7 +33,7 @@ public class AStar {
 		while (!ol.isEmpty()) {
 			curNode = ol.removeMin();
 			if (curNode.getPosX() == map.getGoalLocationX() && curNode.getPosY() == map.getGoalLocationY()) {
-				System.out.println("Done");
+				System.out.println("Found a Path:");
 				Path p = reconstructPath(map.getElement(goalX, goalY));
 				printPath();
 				return p;
@@ -70,7 +67,10 @@ public class AStar {
 			}
 		}
 	}
-
+	
+	/**
+	 *Unneccesary Method, only used for Showing the calculated path 
+	 */
 	public void printPath() {
 		MapElement node;
 		for (int y = 0; y < map.getSizeY(); y++) {

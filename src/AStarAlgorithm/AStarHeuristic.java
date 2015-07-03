@@ -1,4 +1,6 @@
-package context;
+package AStarAlgorithm;
+
+import context.MapElement;
 
 public interface AStarHeuristic {
 
